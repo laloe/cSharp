@@ -15,13 +15,25 @@ namespace Institucion
         {
             var profe = new Profesor() { Id = 1, Nombre = "michel", Apellido = "pereira", CodigoInterno = "SMART" };
             var transmisor = new TrasmisorDeDatos();
+
+            transmisor.InformacionEnviada += transmisor_InformacionEnviada;
+            transmisor.InformacionEnviada += (objs, eventarg) =>
+            {
+                Console.WriteLine("Se enviaron datos");
+            };
+
             transmisor.FormatearYEnviar(profe, formatter, "LALO");
 
             transmisor.FormatearYEnviar(profe, ReverseFormatter, "LALO");
 
-            transmisor.FormatearYEnviar(profe, (s) => { return new string(s.Reverse().ToArray<char>()); }, "LALO");
+            transmisor.FormatearYEnviar(profe, (s) => new string(s.Reverse().ToArray<char>()), "LALO");
 
             Console.ReadLine();
+        }
+
+        private static void transmisor_InformacionEnviada(object sender, EventArgs e)
+        {
+            Console.WriteLine("Transmisión de información");
         }
         private static string ReverseFormatter(string input)
         {

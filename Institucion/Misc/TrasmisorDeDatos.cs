@@ -22,6 +22,10 @@ namespace Institucion.Misc
         private void Enviar(string rawString)
         {
             Console.WriteLine("Transmisión de Datos" + rawString);
+            if (InformacionEnviada != null)
+                InformacionEnviada(this, new EventArgs());
         }
+
+        public event EventHandler InformacionEnviada;
     }
 }
