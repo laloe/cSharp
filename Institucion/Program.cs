@@ -3,6 +3,7 @@ using Institucion.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,37 @@ namespace Institucion
     class Program
     {
         public static void Main(string[] args)
+        {
+            var prefesores = new List<Profesor>();
+            string[] lineas = File.ReadAllLines("./Files/Profesores.txt");
+            int localId = 0; 
+            foreach(var li in lineas)
+            {
+                prefesores.Add(new Profesor() { Nombre = li , Id = localId++});
+            }
+
+            foreach (var profe in prefesores)
+            {
+                Console.WriteLine(profe.Nombre + " " + profe.Id);
+            }
+
+            var archivo = File.Open("profesBinarios.bin", FileMode.OpenOrCreate);
+            var binFile = new BinaryWriter(archivo);
+            foreach (var profe in prefesores)
+            {
+                //var bytesNombre = Encoding.UTF8.GetBytes(profe.Nombre);
+                //archivo.Write(bytesNombre, 0 , bytesNombre.Length);
+                binFile.Write(profe.Nombre);
+                binFile.Write(profe.Id);
+
+            }
+            binFile.Close();
+            archivo.Close();
+
+            Console.ReadLine();
+        }
+
+        private static void rutina6()
         {
             var profe = new Profesor() { Id = 1, Nombre = "michel", Apellido = "pereira", CodigoInterno = "SMART" };
             var transmisor = new TrasmisorDeDatos();
@@ -27,7 +59,7 @@ namespace Institucion
             transmisor.FormatearYEnviar(profe, ReverseFormatter, "LALO");
             transmisor.InformacionEnviada -= transmisor_InformacionEnviada;
             transmisor.FormatearYEnviar(profe, (s) => new string(s.Reverse().ToArray<char>()), "LALO");
-            
+
 
             Console.ReadLine();
         }
