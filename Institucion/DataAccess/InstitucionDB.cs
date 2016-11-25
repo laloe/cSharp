@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Institucion.DataAccess
 {
-    class InstitucionDB
+    public class InstitucionDB : DbContext
     {
     }
 }
