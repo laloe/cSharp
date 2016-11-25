@@ -10,3 +10,4 @@ C:\Users\EDUARDO\Documents\proyectos\WebApp\Institucion\obj\Debug\Institucion.pd
 C:\Users\EDUARDO\Documents\proyectos\WebApp\Institucion\bin\Debug\Institucion.exe
 C:\Users\EDUARDO\Documents\proyectos\WebApp\Institucion\bin\Debug\Institucion.pdb
 C:\Users\EDUARDO\Documents\proyectos\WebApp\Institucion\obj\Debug\Institucion.csprojResolveAssemblyReference.cache
+C:\Users\EDUARDO\Documents\proyectos\WebApp\Institucion\bin\Debug\Files\Profesores.txt

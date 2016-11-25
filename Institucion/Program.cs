@@ -25,8 +25,9 @@ namespace Institucion
             transmisor.FormatearYEnviar(profe, formatter, "LALO");
 
             transmisor.FormatearYEnviar(profe, ReverseFormatter, "LALO");
-
+            transmisor.InformacionEnviada -= transmisor_InformacionEnviada;
             transmisor.FormatearYEnviar(profe, (s) => new string(s.Reverse().ToArray<char>()), "LALO");
+            
 
             Console.ReadLine();
         }
